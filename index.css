@@ -1,0 +1,50 @@
+:root {
+  --background: rgb(27, 27, 27);
+  --primary: rgb(188, 188, 188);
+}
+
+.body {
+  background: var(--background);
+  padding: 0.5rem;
+}
+
+.header {
+  flex-wrap: wrap;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.button {
+  background: var(--primary);
+  padding: 0.5rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.a {
+  color: var(--primary);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.text {
+  color: var(--primary);
+}
+
+.input-number {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem;
+}
+
+.canvas-workspace {
+  border: 1px solid var(--primary);
+  height: 60vh;
+  width: 100%;
+}
