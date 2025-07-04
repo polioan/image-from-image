@@ -541,6 +541,21 @@ export function accentColor(imageData) {
 }
 
 /**
+ * @param {number} [ms]
+ */
+export async function sleep(ms) {
+  await /**
+   * @type {Promise<void>}
+   */ (
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve()
+      }, ms)
+    })
+  )
+}
+
+/**
  * @param {HTMLImageElement} image
  * @param {HTMLImageElement[]} imagesSheet
  * @param {number} xSize
