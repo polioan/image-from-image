@@ -643,6 +643,30 @@ export function randomInt(min, max) {
 }
 
 /**
+ * @param {{
+ *   frequency?: number
+ *   duration?: number
+ *   volume?: number
+ *   type?: OscillatorType
+ * }} [settings]
+ */
+export function beep(settings) {
+  const context = new window.AudioContext()
+  const oscillator = context.createOscillator()
+  const gain = context.createGain()
+
+  oscillator.type = settings?.type ?? 'sine'
+  oscillator.frequency.value = settings?.frequency ?? 440
+  gain.gain.value = settings?.volume ?? 1
+
+  oscillator.connect(gain)
+  gain.connect(context.destination)
+
+  oscillator.start()
+  oscillator.stop(context.currentTime + (settings?.duration ?? 200) / 1000)
+}
+
+/**
  * @param {HTMLImageElement} image
  * @param {number} xSize
  * @param {number} ySize
