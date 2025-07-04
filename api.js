@@ -599,6 +599,22 @@ export function map(value, low1, high1, low2, high2) {
 }
 
 /**
+ * @param {number} number
+ * @param {number} lower
+ * @param {number} [upper]
+ */
+export function clamp(number, lower, upper) {
+  if (typeof upper === 'undefined') {
+    return number > lower ? lower : number
+  } else {
+    if (lower > upper) {
+      ;[lower, upper] = [upper, lower]
+    }
+    return Math.min(Math.max(number, lower), upper)
+  }
+}
+
+/**
  * @param {HTMLImageElement} image
  * @param {number} xSize
  * @param {number} ySize
