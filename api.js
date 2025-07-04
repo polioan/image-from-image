@@ -326,6 +326,8 @@ export function addInputBoolean(text, value, callback) {
   }
 
   header.append(label)
+
+  return label
 }
 
 export async function openFileDialog() {
