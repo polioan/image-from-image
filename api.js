@@ -624,6 +624,10 @@ export function arrayify(payload) {
   return Array.isArray(payload) ? payload : [payload]
 }
 
+export function noop() {}
+
+export async function anoop() {}
+
 /**
  * @param {HTMLImageElement} image
  * @param {number} xSize
