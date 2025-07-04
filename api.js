@@ -615,6 +615,16 @@ export function clamp(number, lower, upper) {
 }
 
 /**
+ * @template T
+ * @param {T} payload
+ * @returns {T extends readonly any[] ? T : [T]}
+ */
+export function arrayify(payload) {
+  // @ts-expect-error
+  return Array.isArray(payload) ? payload : [payload]
+}
+
+/**
  * @param {HTMLImageElement} image
  * @param {number} xSize
  * @param {number} ySize
