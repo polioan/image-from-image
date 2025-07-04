@@ -330,6 +330,36 @@ export function addInputBoolean(text, value, callback) {
   return label
 }
 
+/**
+ * @param {string} text
+ * @param {string} value
+ * @param {(value: string) => Promise<void> | void} [callback]
+ */
+export function addInputString(text, value, callback) {
+  const label = document.createElement('label')
+
+  label.className = 'input'
+
+  const input = document.createElement('input')
+  input.type = 'text'
+
+  input.value = value
+
+  label.append(input)
+
+  label.append(text)
+
+  if (callback) {
+    input.addEventListener('input', async () => {
+      await callback(input.value)
+    })
+  }
+
+  header.append(label)
+
+  return label
+}
+
 export async function openFileDialog() {
   /**
    * @type {File}
