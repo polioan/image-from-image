@@ -395,8 +395,9 @@ export async function fileAsBase64Image(file) {
 
 /**
  * @param {HTMLImageElement} image
+ * @param {string} [downloadName]
  */
-export async function downLoadImage(image) {
+export async function downloadImage(image, downloadName) {
   const { width, height } = image
   const canvas = document.createElement('canvas')
   canvas.width = width
@@ -415,7 +416,7 @@ export async function downLoadImage(image) {
 
   const link = document.createElement('a')
   link.href = URL.createObjectURL(resultBlob)
-  link.download = 'download.png'
+  link.download = downloadName ?? 'download.png'
 
   document.body.appendChild(link)
   link.click()

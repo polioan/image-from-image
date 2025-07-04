@@ -10,7 +10,7 @@ import {
   openMultipleFileDialog,
   addInputNumber,
   effect,
-  downLoadImage,
+  downloadImage,
 } from './api.js'
 
 /**
@@ -84,5 +84,5 @@ addButton('Download', async () => {
     return
   }
 
-  await downLoadImage(workspaceImage)
+  await downloadImage(workspaceImage)
 })
