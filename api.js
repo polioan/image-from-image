@@ -588,6 +588,17 @@ export async function sleep(ms) {
 }
 
 /**
+ * @param {number} value
+ * @param {number} low1
+ * @param {number} high1
+ * @param {number} low2
+ * @param {number} high2
+ */
+export function map(value, low1, high1, low2, high2) {
+  return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1)
+}
+
+/**
  * @param {HTMLImageElement} image
  * @param {number} xSize
  * @param {number} ySize
