@@ -275,7 +275,7 @@ export function addScript(text) {
 export function addInputNumber(text, min, value, max, callback) {
   const label = document.createElement('label')
 
-  label.className = 'input-number'
+  label.className = 'input'
 
   const input = document.createElement('input')
   input.type = 'number'
@@ -296,6 +296,36 @@ export function addInputNumber(text, min, value, max, callback) {
   header.append(label)
 
   return label
+}
+
+/**
+ * @param {string} text
+ * @param {boolean} value
+ * @param {(value: boolean) => Promise<void> | void} [callback]
+ */
+export function addInputBoolean(text, value, callback) {
+  const label = document.createElement('label')
+
+  label.className = 'input'
+
+  const input = document.createElement('input')
+  input.type = 'checkbox'
+
+  if (value) {
+    input.checked = true
+  }
+
+  label.append(input)
+
+  label.append(text)
+
+  if (callback) {
+    input.addEventListener('input', async () => {
+      await callback(input.checked)
+    })
+  }
+
+  header.append(label)
 }
 
 export async function openFileDialog() {
