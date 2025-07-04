@@ -629,6 +629,20 @@ export function noop() {}
 export async function anoop() {}
 
 /**
+ * @param {number} min
+ * @param {number} [max]
+ */
+export function randomInt(min, max) {
+  if (typeof max === 'undefined') {
+    max = min
+    min = 0
+  }
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return min + Math.floor(Math.random() * (max - min + 1))
+}
+
+/**
  * @param {HTMLImageElement} image
  * @param {number} xSize
  * @param {number} ySize
