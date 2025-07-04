@@ -589,6 +589,62 @@ export async function sleep(ms) {
 
 /**
  * @param {HTMLImageElement} image
+ * @param {number} xSize
+ * @param {number} ySize
+ * @param {boolean} [skipWhatNotFitting]
+ */
+export async function chopImage(image, xSize, ySize, skipWhatNotFitting) {
+  const { width, height } = image
+
+  /**
+   * @type {HTMLImageElement[]}
+   */
+  const result = []
+
+  for (let x = 0; x < width - 1; x += xSize) {
+    for (let y = 0; y < height - 1; y += ySize) {
+      let actualXSize = xSize
+      let actualYSize = ySize
+
+      if (x + xSize > width) {
+        if (skipWhatNotFitting) {
+          break
+        }
+        actualXSize = width - x
+      }
+      if (y + ySize > height) {
+        if (skipWhatNotFitting) {
+          break
+        }
+        actualYSize = height - y
+      }
+
+      const canvas = document.createElement('canvas')
+      canvas.width = actualXSize
+      canvas.height = actualYSize
+      const context = assert(canvas.getContext('2d'))
+
+      context.drawImage(
+        image,
+        x,
+        y,
+        actualXSize,
+        actualYSize,
+        0,
+        0,
+        actualXSize,
+        actualYSize
+      )
+
+      result.push(await canvasToImage(canvas))
+    }
+  }
+
+  return result
+}
+
+/**
+ * @param {HTMLImageElement} image
  * @param {HTMLImageElement[]} imagesSheet
  * @param {number} xSize
  * @param {number} ySize
