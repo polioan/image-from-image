@@ -257,7 +257,7 @@ export function addText(text) {
  */
 export function addScript(text) {
   const script = document.createElement('script')
-  script.textContent = text
+  script.textContent = text.replaceAll('../scripts/api.js', './scripts/api.js')
   script.type = 'module'
 
   document.head.append(script)
