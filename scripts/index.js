@@ -11,7 +11,7 @@ import {
   addInputNumber,
   effect,
   downloadImage,
-} from './api.js'
+} from '../scripts/api.js'
 
 /**
  * @type {HTMLImageElement | null}
